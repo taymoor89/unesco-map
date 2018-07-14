@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 
 import Main from './components/main';
 import SidepanList from './components/sidepanList';
-import SidepanDetail from './components/sidepanDetail';
+// import SidepanDetail from './components/sidepanDetail';
 
 import rootReducer from './reducers';
 import './common.css';
@@ -26,7 +26,7 @@ ReactDOM.render(
     <Router history={history}>
       <Route path="/" component={Main}>
         <IndexRoute component={SidepanList}/>
-        <Route path="detail/:id" component={SidepanDetail}/>
+        {/* <Route path="detail/:id" component={SidepanDetail}/> */}
       </Route>
     </Router>
   </Provider>,

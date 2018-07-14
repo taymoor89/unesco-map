@@ -65,7 +65,7 @@ class SidepanList extends React.Component<Props, State> {
 
     const monumentsFiltered = filteredMonuments
       .map((k: string) => monuments[k])
-      .filter(monument => monument.site.toLowerCase().includes(query))
+      .filter(monument => monument.properties.Loc.toLowerCase().includes(query))
       .sort((a, b) => a[sort] > b[sort] ? 1 : -1);
 
     return (

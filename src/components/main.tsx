@@ -6,9 +6,8 @@ import { getMonuments } from '../actions/monument';
 import { MonumentDict, State } from '../reducers/index';
 import UnescoMap from './map';
 import { css, StyleSheet } from 'aphrodite/no-important';
-import { browserHistory, RouteComponentProps } from 'react-router';
+// import { browserHistory } from 'react-router';
 import { Props as SidepanListProps } from './sidepanList';
-import { RouteProps } from './sidepanDetail';
 import SidepanContainer from './sidepanContainer';
 import { fetchMonument } from '../actions/monument';
 
@@ -36,7 +35,7 @@ const styles = StyleSheet.create({
 const defaultZoom: [number] = [6];
 const defaultCenter = [-0.2416815, 51.5285582];
 
-class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>, StateComp> {
+class Main extends React.Component<Props, StateComp> {
   public state = {
     hoveredItem: '',
     zoom: defaultZoom,
@@ -47,12 +46,12 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
   };
 
   public componentWillMount() {
-    const { location, fetchMonument, params } = this.props;
+    // const { location, fetchMonument, params } = this.props;
 
-    if (location.pathname.includes('detail')) {
+    /* if (location.pathname.includes('detail')) {
       fetchMonument(params.id).then(() => {
         this.setState({
-          center: this.props.monuments[params.id].latlng as [number, number],
+          center: this.props.monuments[params.id].geometry.coordinates as [number, number],
           zoom: [11],
           hoveredItem: params.id
         });
@@ -66,8 +65,8 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
           hoveredItem: ''
         });
       }
-    });
-  }
+    });*/
+  } 
 
   private mapInit: MapEvent = (map: any) => {
     const bounds = map.getBounds();
@@ -83,8 +82,8 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
 
     this.setState({
       filteredMonuments: Object.keys(monuments).filter(k => {
-        const lat = monuments[k].latitude;
-        const long = monuments[k].longitude;
+        const lat = monuments[k].geometry.coordinates[1];
+        const long = monuments[k].geometry.coordinates[0];
 
         return lat > bounds[0] && long > bounds[1] && lat < bounds[2] && long < bounds[3];
       }),
@@ -116,20 +115,20 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
     });
   }
 
-  private onMonumentClick = (k: string) => {
-    const selectedMonument = this.props.monuments[k];
+  // private onMonumentClick = (k: string) => {
+  //   const selectedMonument = this.props.monuments[k];
 
-    this.setState({
-      center: selectedMonument.latlng,
-      zoom: [11]
-    });
+  //   this.setState({
+  //     center: selectedMonument.geometry.coordinates,
+  //     zoom: [11]
+  //   });
 
-    this.props.fetchMonument(k);
+  //   this.props.fetchMonument(k);
 
-    setTimeout(() => {
-      browserHistory.replace(`/detail/${k}`);
-    }, 500);
-  };
+  //   setTimeout(() => {
+  //     browserHistory.replace(`/detail/${k}`);
+  //   }, 500);
+  // };
 
   public render() {
     const { monuments, children } = this.props;
@@ -143,7 +142,7 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
             onMouseEnter: this.onMouseEnter,
             onMouseLeave: this.onMouseLeave,
             filteredMonuments: filteredMonuments as string[],
-            onSelectItem: this.onMonumentClick
+            // onSelectItem: this.onMonumentClick
           })
         }
         </SidepanContainer>
@@ -156,7 +155,7 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
           monuments={monuments}
           BoundsChanged={this.BoundsChanged}
           mapInit={this.mapInit}
-          onMonumentClick={this.onMonumentClick}
+          // onMonumentClick={this.onMonumentClick}
         />
       </div>
     );

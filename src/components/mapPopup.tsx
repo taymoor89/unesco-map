@@ -28,13 +28,13 @@ const offset = [0, -15];
 
 const MapPopup: React.StatelessComponent<Props> = ({ monument }) => (
   <Popup
-    coordinates={monument.latlng}
+    coordinates={monument.geometry.coordinates}
     anchor="bottom"
     offset={offset}>
     <div className={css(styles.container)}>
-      <img className={css(styles.image)} src={monument.image_url}/>
+      <img className={css(styles.image)} src={monument.properties.still}/>
       <div className={css(styles.footer)}>
-        <h1 style={{ fontSize: 15 }}>{ monument.site }</h1>
+        <h1 style={{ fontSize: 15 }}>{ monument.properties.Loc }</h1>
       </div>
     </div>
   </Popup>

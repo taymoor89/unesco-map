@@ -29,14 +29,14 @@ export interface Props {
   center: number[];
   zoom: [number];
   hoveredItem: string;
-  onMonumentClick: (k: string) => void;
+  // onMonumentClick: (k: string) => void;
   onMouseEnter: (key: string) => void;
   onMouseLeave: () => void;
 }
 
-const cultureLayout: MonumentLayout = {
-  'icon-image': 'monument'
-};
+// const cultureLayout: MonumentLayout = {
+//   'icon-image': 'monument'
+// };
 
 const natureLayout: MonumentLayout = {
   'icon-image': 'nature'
@@ -54,10 +54,10 @@ class UnescoMap extends React.Component<Props> {
   };
 
   public render() {
-    const { monuments, BoundsChanged, mapInit, center, zoom, hoveredItem, onMonumentClick } = this.props;
+    const { monuments, BoundsChanged, mapInit, center, zoom, hoveredItem, /* onMonumentClick */ } = this.props;
 
-    const cultural = Object.keys(monuments).filter(k => monuments[k].category !== 'Natural');
-    const natural = Object.keys(monuments).filter(k => monuments[k]. category === 'Natural');
+    // const cultural = Object.keys(monuments).filter(k => monuments[k].category !== 'Natural');
+    const natural = Object.keys(monuments).filter(k => monuments[k].category === 'Natural');
 
     return (
       <Map
@@ -73,16 +73,15 @@ class UnescoMap extends React.Component<Props> {
               <MapPopup monument={monuments[hoveredItem]}/>
             ) : undefined
           }
-          <MonumentLayer
+          {/* <MonumentLayer
             onMonumentClick={onMonumentClick}
             monuments={monuments}
             monumentIds={cultural}
             layout={cultureLayout}
             markerHover={this.markerHover}
             markerEndHover={this.markerEndHover}
-          />
+          /> */}
           <MonumentLayer
-            onMonumentClick={onMonumentClick}
             monuments={monuments}
             layout={natureLayout}
             monumentIds={natural}

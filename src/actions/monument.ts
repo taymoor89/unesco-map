@@ -1,4 +1,5 @@
 import { SET_MONUMENTS, SET_PHOTOS } from '../constants/monument';
+import data from './WalesNewMapTest';
 
 const api = (endpoint = 'monuments') => `https://unesco-api.balek.io/api/${endpoint}`;
 
@@ -12,7 +13,7 @@ const req = (url: string, method = 'GET', body?: any) => new Request(url, {
   body
 });
 
-const selectedFields = [
+/* const selectedFields = [
   'id',
   'latitude',
   'longitude',
@@ -25,7 +26,7 @@ const selectedFields = [
 
 const buildMonumentsUrl = () => (
   `${api()}?select=${selectedFields.join(',')}` //tslint:disable-line
-);
+); */
 
 const setMonuments = (data: any) => ({
   type: SET_MONUMENTS,
@@ -39,9 +40,14 @@ const setPhotos = (data: any, id: string) => ({
 });
 
 export const getMonuments = () => (dispatch: any) => (
-  fetch(req(buildMonumentsUrl()))
-    .then(res => res.json())
-    .then((data) => dispatch(setMonuments(data)))
+  // fetch(req(buildMonumentsUrl()))
+  //   .then(res => res.json())
+  //   .then((d) => {
+  //     console.log(d);
+  //   })
+  new Promise((resolve) => {
+    resolve(data.features)
+  }).then(data => dispatch(setMonuments({data})))
 );
 
 export const fetchMonument = (id: string) => (dispatch: any) => (

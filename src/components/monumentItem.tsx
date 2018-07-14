@@ -57,14 +57,13 @@ const MonumentItem: React.StatelessComponent<Props> = ({ monument, onMouseEnter,
       )
     }
     <div className={css(styles.description)}>
-      <h1>{ monument.site }</h1>
-      <div className={css(styles.second)}>
-        <span className={css(styles.state)}>{ monument.states }</span>
-        <span> | { monument.date_inscribed }</span>
-      </div>
+      <h1>{ monument.properties.Loc }</h1>
+      {/* <div className={css(styles.second)}>
+        <span className={css(styles.state)}>{ monument.properties.Loc }</span>      
+      </div> */}
     </div>
     <div className={css(styles.image)}>
-      <img src={monument.image_url}/>
+      <img src={monument.properties.still}/>
     </div>
   </div>
 );

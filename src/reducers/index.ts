@@ -1,6 +1,7 @@
 import { routerReducer as routing, RouterState } from 'react-router-redux';
 import { combineReducers, Action } from 'redux';
 import { SET_MONUMENTS, SET_PHOTOS } from '../constants/monument';
+import * as uuid from 'uuid/v4';
 
 export interface Picture {
   id: string;
@@ -13,9 +14,27 @@ export interface Picture {
   url: string;
 }
 
+export interface Geometry {
+  type: string;
+  coordinates: [number, number];
+}
+
+export interface Properties {
+  Info: string;
+  Loc: string;
+  Ref: string;
+  VidLink: string;
+  VidUrl: string;
+  still: string;
+}
+
 export interface Monument {
+  type: string;
+  geometry: Geometry;
+  properties: Properties;
   id: string;
-  id_number: number;
+  category: string,
+  /* id_number: number;
   category: 'Cultural' | 'Natural' | 'Mixed';
   created_at: string;
   updated_at: string;
@@ -41,7 +60,7 @@ export interface Monument {
   secondary_dates: string;
   site: string;
   transboundary: number;
-  unique_number: number;
+  unique_number: number; */
 }
 
 export interface MonumentDict {
@@ -64,7 +83,9 @@ const monuments = (state: MonumentDict = {}, { type, payload, id }: RThunkAction
       ...payload.data
         .map((monument: Monument) => ({
           ...monument,
-          latlng: [monument.longitude, monument.latitude]
+          id: uuid(),
+          category: 'Natural',
+          latlng: monument.geometry.coordinates
         }))
         .reduce((acc: MonumentDict, next: Monument) => {
           if (acc[next.id]) {
@@ -78,7 +99,7 @@ const monuments = (state: MonumentDict = {}, { type, payload, id }: RThunkAction
     };
     case SET_PHOTOS: {
       const monument = { ...state[id!] };
-      monument.pictures = payload.data;
+      monument.properties.still = payload.data;
       return {
         ...state,
         [id!]: monument

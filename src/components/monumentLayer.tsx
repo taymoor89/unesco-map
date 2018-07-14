@@ -8,7 +8,7 @@ export interface MonumentLayout {
 
 export interface Props {
   monuments: MonumentDict;
-  onMonumentClick: Function;
+  // onMonumentClick: Function;
   markerHover: Function;
   markerEndHover: Function;
   monumentIds: string[];
@@ -17,7 +17,7 @@ export interface Props {
 
 const monumentLayer: React.StatelessComponent<Props> = ({
   monuments,
-  onMonumentClick,
+  // onMonumentClick,
   markerHover,
   markerEndHover,
   monumentIds,
@@ -32,8 +32,8 @@ const monumentLayer: React.StatelessComponent<Props> = ({
         <Feature
           onMouseEnter={markerHover.bind(null, k)}
           onMouseLeave={markerEndHover.bind(null, k)}
-          onClick={onMonumentClick.bind(null, k)}
-          coordinates={monuments[k].latlng}
+          // onClick={onMonumentClick.bind(null, k)}
+          coordinates={monuments[k].geometry.coordinates}
           key={k}
         />
       ))
