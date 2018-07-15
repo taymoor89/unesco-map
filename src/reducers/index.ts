@@ -5,12 +5,13 @@ import * as uuid from 'uuid/v4';
 
 export interface Picture {
   id: string;
-  author: string;
+  /* author: string;
   created_at: number;
   flickr_id: string;
-  license_id: string;
-  monument_id: string;
-  updated_at: number;
+  license_id: string; */
+  // monument_id: string;
+  // updated_at: number;
+  type: string;
   url: string;
 }
 
@@ -34,6 +35,7 @@ export interface Monument {
   properties: Properties;
   id: string;
   category: string,
+  pictures: Picture[]
   /* id_number: number;
   category: 'Cultural' | 'Natural' | 'Mixed';
   created_at: string;
@@ -50,7 +52,6 @@ export interface Monument {
   latitude: number;
   longitude: number;
   latlng: number[];
-  pictures: Picture[];
   location: string;
   states: string;
   long_description: string;
@@ -81,25 +82,35 @@ const monuments = (state: MonumentDict = {}, { type, payload, id }: RThunkAction
   switch (type) {
     case SET_MONUMENTS: return {
       ...payload.data
-        .map((monument: Monument) => ({
-          ...monument,
-          id: uuid(),
-          category: 'Natural',
-          latlng: monument.geometry.coordinates
-        }))
-        .reduce((acc: MonumentDict, next: Monument) => {
-          if (acc[next.id]) {
-            acc[next.id] = { ...acc[next.id], ...next };
-          } else {
-            acc[next.id] = next;
+      .map((monument: Monument) => ({
+        ...monument,
+        category: 'Natural',
+        pictures: [
+          {
+            id: uuid(),
+            type: 'image',
+            url: monument.properties.still
+          },
+          {
+            id: uuid(),
+            type: 'video',
+            url: monument.properties.VidUrl            
           }
-
-          return acc;
-        }, { ...state })
+        ],
+        latlng: monument.geometry.coordinates
+      }))
+      .reduce((acc: MonumentDict, next: Monument) => {
+        if (acc[next.id]) {
+          acc[next.id] = { ...acc[next.id], ...next };
+        } else {
+          acc[next.id] = next;
+        }
+        
+        return acc;
+      }, { ...state })
     };
     case SET_PHOTOS: {
       const monument = { ...state[id!] };
-      monument.properties.still = payload.data;
       return {
         ...state,
         [id!]: monument

@@ -5,6 +5,7 @@ import { Picture } from '../reducers/index';
 import Right from '../icons/right';
 import Left from '../icons/left';
 import { colors } from '../style';
+const placeholder = require('../placeholder.png'); // tslint:disable-line
 
 export interface Props {
   pictures: Picture[];
@@ -79,7 +80,15 @@ class Slider extends React.Component<Props, State> {
           {
             pictures.map((picture, index) => (
               <div className={css(styles.image)} key={index}>
-                <img src={picture.url} style={{ margin: 'auto', maxHeight: 300 }} onClick={onFullScreen}/>
+                { picture.type === 'image'? (
+                  <img src={picture.url} style={{ margin: 'auto', maxHeight: 300 }} onClick={onFullScreen} onError={(e) => {
+                    e.currentTarget.src = `/${placeholder}`;
+                  }}/>
+                ): (
+                    <video src={picture.url} controls style={{ margin: 'auto', maxHeight: 300 }}/>
+                  )
+                }
+  
               </div>
             ))
           }

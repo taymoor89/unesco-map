@@ -29,7 +29,7 @@ export interface Props {
   center: number[];
   zoom: [number];
   hoveredItem: string;
-  // onMonumentClick: (k: string) => void;
+  onMonumentClick: (k: string) => void;
   onMouseEnter: (key: string) => void;
   onMouseLeave: () => void;
 }
@@ -54,7 +54,7 @@ class UnescoMap extends React.Component<Props> {
   };
 
   public render() {
-    const { monuments, BoundsChanged, mapInit, center, zoom, hoveredItem, /* onMonumentClick */ } = this.props;
+    const { monuments, BoundsChanged, mapInit, center, zoom, hoveredItem, onMonumentClick } = this.props;
 
     // const cultural = Object.keys(monuments).filter(k => monuments[k].category !== 'Natural');
     const natural = Object.keys(monuments).filter(k => monuments[k].category === 'Natural');
@@ -82,6 +82,7 @@ class UnescoMap extends React.Component<Props> {
             markerEndHover={this.markerEndHover}
           /> */}
           <MonumentLayer
+            onMonumentClick={onMonumentClick}
             monuments={monuments}
             layout={natureLayout}
             monumentIds={natural}

@@ -1,7 +1,7 @@
 import { SET_MONUMENTS, SET_PHOTOS } from '../constants/monument';
 import data from './WalesNewMapTest';
 
-const api = (endpoint = 'monuments') => `https://unesco-api.balek.io/api/${endpoint}`;
+/* const api = (endpoint = 'monuments') => `https://unesco-api.balek.io/api/${endpoint}`;
 
 const req = (url: string, method = 'GET', body?: any) => new Request(url, {
   method,
@@ -11,7 +11,7 @@ const req = (url: string, method = 'GET', body?: any) => new Request(url, {
     'Accept-Charset': 'utf-8'
   }),
   body
-});
+}); */
 
 /* const selectedFields = [
   'id',
@@ -33,7 +33,8 @@ const setMonuments = (data: any) => ({
   payload: data
 });
 
-const setPhotos = (data: any, id: string) => ({
+// const setPhotos = (data: any, id: string) => ({
+const setPhotos = (id: string) => ({
   type: SET_PHOTOS,
   payload: data,
   id
@@ -51,11 +52,14 @@ export const getMonuments = () => (dispatch: any) => (
 );
 
 export const fetchMonument = (id: string) => (dispatch: any) => (
-  Promise.all([
+  /* Promise.all([
     fetch(req(`${api()}?id=eq.${id}`)).then(res => res.json()),
     fetch(req(`${api('pictures')}?monument_id=eq.${id}`)).then(res => res.json())
   ]).then(([ monument, photos ]: any) => {
     dispatch(setMonuments(monument));
     dispatch(setPhotos(photos, id));
-  })
-);
+  }) */
+  new Promise((resolve) => {
+    resolve()
+  }).then(() => dispatch(setMonuments({data}))).then(() => dispatch(setPhotos(id)))
+)

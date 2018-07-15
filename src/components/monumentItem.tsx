@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Monument } from '../reducers/index';
 import { StyleSheet, css } from 'aphrodite/no-important';
 import { colors } from '../style';
+const placeholder = require('../placeholder.png'); // tslint:disable-line
 
 export interface Props {
   monument: Monument;
@@ -41,7 +42,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    paddingRight: 10
+    paddingRight: 10   
+  },
+  img: {
+    width: 80,
+    height: 80
   }
 });
 
@@ -63,7 +68,9 @@ const MonumentItem: React.StatelessComponent<Props> = ({ monument, onMouseEnter,
       </div> */}
     </div>
     <div className={css(styles.image)}>
-      <img src={monument.properties.still}/>
+      <img src={monument.properties.still} className={css(styles.img)} onError={(e) => {
+        e.currentTarget.src = `/${placeholder}`;
+      }}/>
     </div>
   </div>
 );

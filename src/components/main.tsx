@@ -6,8 +6,9 @@ import { getMonuments } from '../actions/monument';
 import { MonumentDict, State } from '../reducers/index';
 import UnescoMap from './map';
 import { css, StyleSheet } from 'aphrodite/no-important';
-// import { browserHistory } from 'react-router';
+import { browserHistory, RouteComponentProps } from 'react-router';
 import { Props as SidepanListProps } from './sidepanList';
+import { RouteProps } from './sidepanDetail';
 import SidepanContainer from './sidepanContainer';
 import { fetchMonument } from '../actions/monument';
 
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
 const defaultZoom: [number] = [6];
 const defaultCenter = [-0.2416815, 51.5285582];
 
-class Main extends React.Component<Props, StateComp> {
+class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>, StateComp> {
   public state = {
     hoveredItem: '',
     zoom: defaultZoom,
@@ -46,9 +47,9 @@ class Main extends React.Component<Props, StateComp> {
   };
 
   public componentWillMount() {
-    // const { location, fetchMonument, params } = this.props;
+    const { location, fetchMonument, params } = this.props;
 
-    /* if (location.pathname.includes('detail')) {
+    if (location.pathname.includes('detail')) {
       fetchMonument(params.id).then(() => {
         this.setState({
           center: this.props.monuments[params.id].geometry.coordinates as [number, number],
@@ -65,7 +66,7 @@ class Main extends React.Component<Props, StateComp> {
           hoveredItem: ''
         });
       }
-    });*/
+    });
   } 
 
   private mapInit: MapEvent = (map: any) => {
@@ -115,20 +116,20 @@ class Main extends React.Component<Props, StateComp> {
     });
   }
 
-  // private onMonumentClick = (k: string) => {
-  //   const selectedMonument = this.props.monuments[k];
+  private onMonumentClick = (k: string) => {
+    const selectedMonument = this.props.monuments[k];
 
-  //   this.setState({
-  //     center: selectedMonument.geometry.coordinates,
-  //     zoom: [11]
-  //   });
+    this.setState({
+      center: selectedMonument.geometry.coordinates,
+      zoom: [11]
+    });
 
-  //   this.props.fetchMonument(k);
+    this.props.fetchMonument(k);
 
-  //   setTimeout(() => {
-  //     browserHistory.replace(`/detail/${k}`);
-  //   }, 500);
-  // };
+    setTimeout(() => {
+      browserHistory.replace(`/detail/${k}`);
+    }, 500);
+  };
 
   public render() {
     const { monuments, children } = this.props;
@@ -142,7 +143,7 @@ class Main extends React.Component<Props, StateComp> {
             onMouseEnter: this.onMouseEnter,
             onMouseLeave: this.onMouseLeave,
             filteredMonuments: filteredMonuments as string[],
-            // onSelectItem: this.onMonumentClick
+            onSelectItem: this.onMonumentClick
           })
         }
         </SidepanContainer>
@@ -155,7 +156,7 @@ class Main extends React.Component<Props, StateComp> {
           monuments={monuments}
           BoundsChanged={this.BoundsChanged}
           mapInit={this.mapInit}
-          // onMonumentClick={this.onMonumentClick}
+          onMonumentClick={this.onMonumentClick}
         />
       </div>
     );

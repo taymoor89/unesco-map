@@ -3,6 +3,8 @@ import { Popup } from 'react-mapbox-gl';
 import { Monument } from '../reducers/index';
 import { css, StyleSheet } from 'aphrodite/no-important';
 import { colors } from '../style';
+const placeholder = require('../placeholder.png'); // tslint:disable-line
+
 
 export interface Props {
   monument: Monument;
@@ -16,7 +18,9 @@ const styles = StyleSheet.create({
     borderRadius: 5
   },
   image: {
-    margin: 'auto'
+    margin: 'auto',
+    width: '80px',
+    height: '80px'
   },
   footer: {
     backgroundColor: 'white',
@@ -32,7 +36,9 @@ const MapPopup: React.StatelessComponent<Props> = ({ monument }) => (
     anchor="bottom"
     offset={offset}>
     <div className={css(styles.container)}>
-      <img className={css(styles.image)} src={monument.properties.still}/>
+      <img className={css(styles.image)} src={monument.properties.still} onError={(e) => {
+        e.currentTarget.src = `/${placeholder}`;
+      }}/>
       <div className={css(styles.footer)}>
         <h1 style={{ fontSize: 15 }}>{ monument.properties.Loc }</h1>
       </div>
