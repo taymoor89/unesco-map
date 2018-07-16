@@ -17,10 +17,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.darkBlue,
     borderRadius: 5
   },
-  image: {
-    margin: 'auto',
-    width: '80px',
-    height: '80px'
+  image: {    
+    maxWidth: '100%',
+    maxHeight: '100%'
   },
   footer: {
     backgroundColor: 'white',

@@ -128,8 +128,7 @@ class SidepanDetail extends React.Component<Props, State> {
           }
         </div>
         <div className={css(styles.monumentDetails)}>
-          <h1 className={css(styles.title)}>{monument.properties.Loc}</h1>
-          {/* <div className={css(styles.leading)}>{ monument.states }</div> */}
+          <h1 className={css(styles.title)}>{monument.properties.Loc}</h1>          
           <div className={css(styles.description)}>
             { monument.properties.Info }
           </div>

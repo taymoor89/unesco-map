@@ -42,11 +42,13 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    paddingRight: 10   
+    paddingRight: 10,
+    maxWidth: 200,
+    minWidth: 120
   },
   img: {
-    width: 80,
-    height: 80
+    maxWidth: '100%',
+    maxHeight: '100%'
   }
 });
 
@@ -62,10 +64,7 @@ const MonumentItem: React.StatelessComponent<Props> = ({ monument, onMouseEnter,
       )
     }
     <div className={css(styles.description)}>
-      <h1>{ monument.properties.Loc }</h1>
-      {/* <div className={css(styles.second)}>
-        <span className={css(styles.state)}>{ monument.properties.Loc }</span>      
-      </div> */}
+      <h1>{ monument.properties.Loc }</h1>      
     </div>
     <div className={css(styles.image)}>
       <img src={monument.properties.still} className={css(styles.img)} onError={(e) => {

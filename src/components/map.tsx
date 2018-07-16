@@ -34,10 +34,6 @@ export interface Props {
   onMouseLeave: () => void;
 }
 
-// const cultureLayout: MonumentLayout = {
-//   'icon-image': 'monument'
-// };
-
 const natureLayout: MonumentLayout = {
   'icon-image': 'nature'
 };
@@ -54,9 +50,7 @@ class UnescoMap extends React.Component<Props> {
   };
 
   public render() {
-    const { monuments, BoundsChanged, mapInit, center, zoom, hoveredItem, onMonumentClick } = this.props;
-
-    // const cultural = Object.keys(monuments).filter(k => monuments[k].category !== 'Natural');
+    const { monuments, BoundsChanged, mapInit, center, zoom, hoveredItem, onMonumentClick } = this.props;    
     const natural = Object.keys(monuments).filter(k => monuments[k].category === 'Natural');
 
     return (
@@ -72,15 +66,7 @@ class UnescoMap extends React.Component<Props> {
             !!hoveredItem ? (
               <MapPopup monument={monuments[hoveredItem]}/>
             ) : undefined
-          }
-          {/* <MonumentLayer
-            onMonumentClick={onMonumentClick}
-            monuments={monuments}
-            monumentIds={cultural}
-            layout={cultureLayout}
-            markerHover={this.markerHover}
-            markerEndHover={this.markerEndHover}
-          /> */}
+          }          
           <MonumentLayer
             onMonumentClick={onMonumentClick}
             monuments={monuments}
