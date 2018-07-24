@@ -3,7 +3,7 @@ import { Layer, Feature } from 'react-mapbox-gl';
 import { MonumentDict } from '../reducers/index';
 
 export interface MonumentLayout {
-  'icon-image': 'monument' | 'nature';
+  'icon-image': string;
 }
 
 export interface Props {
@@ -32,7 +32,7 @@ const monumentLayer: React.StatelessComponent<Props> = ({
         <Feature
           onMouseEnter={markerHover.bind(null, k)}
           onMouseLeave={markerEndHover.bind(null, k)}
-          onClick={onMonumentClick.bind(null, k)}
+          onClick={onMonumentClick.bind(null, monuments[k].layerId, k)}
           coordinates={monuments[k].geometry.coordinates}
           key={k}
         />

@@ -6,7 +6,7 @@ import { StyleSheet, css } from 'aphrodite/no-important';
 import Slider from './slider';
 import { colors } from '../style';
 import Back from '../icons/back';
-import Fullscreen from './fullscreen';
+// import Fullscreen from './fullscreen';
 const placeholder = require('../placeholder.png'); // tslint:disable-line
 
 export interface Props {
@@ -18,6 +18,7 @@ interface State {
 }
 
 export interface RouteProps {
+  layerId: string;
   id: string;
 }
 
@@ -88,33 +89,33 @@ class SidepanDetail extends React.Component<Props, State> {
     browserHistory.push('/');
   }
 
-  private onFullScreen = () => {
-    this.setState({
-      isFullscreen: true
-    });
-  }
+  // private onFullScreen = () => {
+  //   this.setState({
+  //     isFullscreen: true
+  //   });
+  // }
 
-  private onDismissFullscreen = () => {
-    this.setState({
-      isFullscreen: false
-    });
-  }
+  // private onDismissFullscreen = () => {
+  //   this.setState({
+  //     isFullscreen: false
+  //   });
+  // }
 
   public render() {
     const { monument } = this.props;
-    const { isFullscreen } = this.state;
+    // const { isFullscreen } = this.state;
 
     if (!monument) {
       return null;
     }
 
-    const hasPictures = monument.pictures && monument.pictures.length > 0;
+    const hasPictures = monument.properties.Media && monument.properties.Media.length > 0;
 
     return (
       <div className={css(styles.container)}>
-        {
-          isFullscreen && <Fullscreen pictures={monument.pictures} onDismissFullscreen={this.onDismissFullscreen}/>
-        }
+        {/* {
+          isFullscreen && <Fullscreen pictures={monument.properties.Media} onDismissFullscreen={this.onDismissFullscreen}/>
+        } */}
         <div className={css(styles.footer)}>
           <div className={css(styles.allSites)} onClick={this.onGoBack}>
             <Back className={css(styles.back)}/>
@@ -123,7 +124,7 @@ class SidepanDetail extends React.Component<Props, State> {
         <div>
           {
             hasPictures ?
-              <Slider pictures={monument.pictures} onFullScreen={this.onFullScreen}/> :
+              <Slider pictures={monument.properties.Media} /* onFullScreen={this.onFullScreen} *//> :
               <img src={`/${placeholder}`}/>
           }
         </div>

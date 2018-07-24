@@ -5,6 +5,7 @@ import { MonumentDict } from '../reducers/index';
 import { MapEvent } from 'react-mapbox-gl/lib/map-events';
 import MonumentLayer from './monumentLayer';
 import { MonumentLayout } from './monumentLayer';
+import {Layer} from '../reducers';
 
 const Map = ReactMapboxGl({
   accessToken: 'pk.eyJ1IjoibG91aXNjdXJyaWUiLCJhIjoiY3MwR3B3QSJ9._5UXyjEIY0YisuAz9c_tJA'
@@ -29,14 +30,19 @@ export interface Props {
   center: number[];
   zoom: [number];
   hoveredItem: string;
-  onMonumentClick: (k: string) => void;
+  onMonumentClick: (layerId: string, k: string) => void;
   onMouseEnter: (key: string) => void;
   onMouseLeave: () => void;
+  layers: Layer[];
 }
 
-const natureLayout: MonumentLayout = {
+/* const layer1Layout: MonumentLayout = {
   'icon-image': 'nature'
-};
+}; */
+
+/* const layer2Layout: MonumentLayout = {
+  'icon-image': 'nature'
+}; */
 
 class UnescoMap extends React.Component<Props> {
   private markerHover = (key: string, { map }: any) => {
@@ -50,8 +56,27 @@ class UnescoMap extends React.Component<Props> {
   };
 
   public render() {
-    const { monuments, BoundsChanged, mapInit, center, zoom, hoveredItem, onMonumentClick } = this.props;    
-    const natural = Object.keys(monuments).filter(k => monuments[k].category === 'Natural');
+    const { monuments, BoundsChanged, mapInit, center, zoom, hoveredItem, onMonumentClick } = this.props;
+    // const layer1 = Object.keys(monuments).filter(k => monuments[k].icon === 'Natural');
+    // const layer2 = Object.keys(monuments).filter(k => monuments[k].icon === 'Natural');
+    let activeLayers = this.props.layers.filter(layer => layer.active);
+    const layers = activeLayers.map(layer => {
+      const layout: MonumentLayout = {
+        'icon-image': layer.icon
+      };
+      const monumentIds = Object.keys(monuments).filter(k => monuments[k].layerId === layer.id);
+      return (
+        <MonumentLayer
+            key={layer.id}
+            onMonumentClick={onMonumentClick}
+            monuments={monuments}
+            layout={layout}
+            monumentIds={monumentIds}
+            markerHover={this.markerHover}
+            markerEndHover={this.markerEndHover}
+          />
+      );
+    })
 
     return (
       <Map
@@ -66,15 +91,19 @@ class UnescoMap extends React.Component<Props> {
             !!hoveredItem ? (
               <MapPopup monument={monuments[hoveredItem]}/>
             ) : undefined
-          }          
-          <MonumentLayer
+          }
+          
+          {/* <MonumentLayer
             onMonumentClick={onMonumentClick}
             monuments={monuments}
             layout={natureLayout}
             monumentIds={natural}
             markerHover={this.markerHover}
             markerEndHover={this.markerEndHover}
-          />
+          /> */}
+          {
+            layers
+          }
       </Map>
     );
   }

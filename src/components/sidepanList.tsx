@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, css } from 'aphrodite/no-important';
-import { MonumentDict, State as RootState} from '../reducers/index';
+import { MonumentDict, Layer, State as RootState} from '../reducers/index';
 import MonumentItem from './monumentItem';
 import Navigation from './navigation';
 
@@ -25,6 +25,7 @@ export interface Props {
   onSelectItem: (key: string) => void;
   onMouseEnter: (key: string) => void;
   onMouseLeave: () => void;
+  layers: Layer[];
 }
 
 export interface State {
@@ -65,7 +66,10 @@ class SidepanList extends React.Component<Props, State> {
 
     const monumentsFiltered = filteredMonuments
       .map((k: string) => monuments[k])
-      .filter(monument => monument.properties.Loc.toLowerCase().includes(query))
+      .filter(monument => {
+        const layer = this.props.layers.find(layer => layer.id === monument.layerId);
+        return layer && layer.active && monument.properties.Loc.toLowerCase().includes(query);
+      })
       .sort((a, b) => a[sort] > b[sort] ? 1 : -1);
 
     return (

@@ -26,7 +26,7 @@ ReactDOM.render(
     <Router history={history}>
       <Route path="/" component={Main}>
         <IndexRoute component={SidepanList}/>
-        <Route path="detail/:id" component={SidepanDetail}/>
+        <Route path="detail/:layerId/:id" component={SidepanDetail}/>
       </Route>
     </Router>
   </Provider>,

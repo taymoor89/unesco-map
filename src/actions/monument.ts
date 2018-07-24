@@ -1,5 +1,8 @@
 import { SET_MONUMENTS, SET_PHOTOS } from '../constants/monument';
-import data from './WalesNewMapTest';
+import layer1 from './layer1';
+import layer2 from './layer2';
+import layer3 from './layer3';
+import { addLayer } from '../actions/layers';
 
 /* const api = (endpoint = 'monuments') => `https://unesco-api.balek.io/api/${endpoint}`;
 
@@ -28,7 +31,7 @@ const buildMonumentsUrl = () => (
   `${api()}?select=${selectedFields.join(',')}` //tslint:disable-line
 ); */
 
-const setMonuments = (data: any) => ({
+export const setMonuments = (data: any) => ({
   type: SET_MONUMENTS,
   payload: data
 });
@@ -36,7 +39,7 @@ const setMonuments = (data: any) => ({
 // const setPhotos = (data: any, id: string) => ({
 const setPhotos = (id: string) => ({
   type: SET_PHOTOS,
-  payload: data,
+  // payload: data,
   id
 });
 
@@ -47,11 +50,17 @@ export const getMonuments = () => (dispatch: any) => (
   //     console.log(d);
   //   })
   new Promise((resolve) => {
-    resolve(data.features)
-  }).then(data => dispatch(setMonuments({data})))
+    resolve()
+  })
+  .then(() => dispatch(setMonuments(layer1)))
+  .then(() => dispatch(setMonuments(layer2)))
+  .then(() => dispatch(setMonuments(layer3)))
+  .then(() => dispatch(addLayer(layer1)))
+  .then(() => dispatch(addLayer(layer2)))
+  .then(() => dispatch(addLayer(layer3)))
 );
 
-export const fetchMonument = (id: string) => (dispatch: any) => (
+export const fetchMonument = (layerId: string, id: string) => (dispatch: any) => (
   /* Promise.all([
     fetch(req(`${api()}?id=eq.${id}`)).then(res => res.json()),
     fetch(req(`${api('pictures')}?monument_id=eq.${id}`)).then(res => res.json())
@@ -61,5 +70,6 @@ export const fetchMonument = (id: string) => (dispatch: any) => (
   }) */
   new Promise((resolve) => {
     resolve()
-  }).then(() => dispatch(setMonuments({data}))).then(() => dispatch(setPhotos(id)))
+  // }).then(() => dispatch(setMonuments({data}))).then(() => dispatch(setPhotos(id)))
+  }).then(() => dispatch(setPhotos(id)))
 )

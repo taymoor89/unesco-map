@@ -3,7 +3,7 @@ import { MapEvent } from 'react-mapbox-gl/lib/map-events';
 import { throttle } from 'lodash';
 import { connect } from 'react-redux';
 import { getMonuments } from '../actions/monument';
-import { MonumentDict, State } from '../reducers/index';
+import { MonumentDict, State, Layer } from '../reducers/index';
 import UnescoMap from './map';
 import { css, StyleSheet } from 'aphrodite/no-important';
 import { browserHistory, RouteComponentProps } from 'react-router';
@@ -11,11 +11,15 @@ import { Props as SidepanListProps } from './sidepanList';
 import { RouteProps } from './sidepanDetail';
 import SidepanContainer from './sidepanContainer';
 import { fetchMonument } from '../actions/monument';
+import LayerList from './layerList';
+import {toggleLayer} from '../actions/layers';
 
 interface Props {
   getMonuments: () => any;
   monuments: MonumentDict;
-  fetchMonument: (id: string) => any;
+  layers: Layer[];
+  fetchMonument: (layerId: string, id: string) => any;
+  toggleLayer: (layerId: any) => any;
 }
 
 interface StateComp {
@@ -48,34 +52,33 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
 
   public componentWillMount() {
     const { location, fetchMonument, params } = this.props;
+    this.props.getMonuments().then(() => {
 
-    if (location.pathname.includes('detail')) {
-      fetchMonument(params.id).then(() => {
-        this.setState({
-          center: this.props.monuments[params.id].geometry.coordinates as [number, number],
-          zoom: [11],
-          hoveredItem: params.id
-        });
-      });
-    }
-
-    browserHistory.listen((ev) => {
-      if (!ev.pathname.includes('detail')) {
-        this.setState({
-          zoom: defaultZoom,
-          hoveredItem: ''
+      if (location.pathname.includes('detail')) {
+        fetchMonument(params.layerId, params.id).then(() => {
+          this.setState({
+            center: this.props.monuments[params.id].geometry.coordinates as [number, number],
+            zoom: [11],
+            hoveredItem: params.id
+          });
         });
       }
-    });
+  
+      browserHistory.listen((ev) => {
+        if (!ev.pathname.includes('detail')) {
+          this.setState({
+            zoom: defaultZoom,
+            hoveredItem: ''
+          });
+        }
+      });      
+    });    
   } 
 
   private mapInit: MapEvent = (map: any) => {
     const bounds = map.getBounds();
-    const boundsArr = [bounds.getSouth(), bounds.getWest(), bounds.getNorth(), bounds.getEast()];
-
-    this.props.getMonuments().then(() => {
-      this.setMonumentsAndBounds(boundsArr);
-    });
+    const boundsArr = [bounds.getSouth(), bounds.getWest(), bounds.getNorth(), bounds.getEast()];    
+    this.setMonumentsAndBounds(boundsArr);
   };
 
   private setMonumentsAndBounds = (bounds: number[]) => {
@@ -116,7 +119,7 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
     });
   }
 
-  private onMonumentClick = (k: string) => {
+  private onMonumentClick = (layerId: string, k: string) => {
     const selectedMonument = this.props.monuments[k];
 
     this.setState({
@@ -124,11 +127,15 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
       zoom: [11]
     });
 
-    this.props.fetchMonument(k);
+    this.props.fetchMonument(layerId, k);
 
     setTimeout(() => {
-      browserHistory.replace(`/detail/${k}`);
+      browserHistory.replace(`/detail/${layerId}/${k}`);
     }, 500);
+  };
+
+  handleLayerClick = (layerId: string) => {
+    this.props.toggleLayer(layerId);
   };
 
   public render() {
@@ -143,10 +150,12 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
             onMouseEnter: this.onMouseEnter,
             onMouseLeave: this.onMouseLeave,
             filteredMonuments: filteredMonuments as string[],
-            onSelectItem: this.onMonumentClick
+            onSelectItem: this.onMonumentClick,
+            layers: this.props.layers
           })
         }
         </SidepanContainer>
+        <LayerList layers={this.props.layers} onClick={this.handleLayerClick}/>  
         <UnescoMap
           zoom={zoom}
           center={center}
@@ -157,6 +166,7 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
           BoundsChanged={this.BoundsChanged}
           mapInit={this.mapInit}
           onMonumentClick={this.onMonumentClick}
+          layers={this.props.layers}
         />
       </div>
     );
@@ -164,8 +174,10 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
 }
 
 export default connect((state: State) => ({
-  monuments: state.monuments
+  monuments: state.monuments,
+  layers: state.layers,  
 }), dispatch => ({
   getMonuments: () => dispatch(getMonuments()),
-  fetchMonument: (id: string) => dispatch(fetchMonument(id))
+  fetchMonument: (layerId: string, id: string) => dispatch(fetchMonument(layerId, id)),
+  toggleLayer: (layerId: string) => dispatch(toggleLayer(layerId)),
 }))(Main);
