@@ -1,6 +1,6 @@
 export default {
     "id":"25835c9b-5d86-4d5c-bef2-6bc557644323",
-    "title": "Layer 1",
+    "title": "Parks",
     "icon": "nature",
     "type":"FeatureCollection",
     "features":[  

@@ -1,6 +1,6 @@
 export default {
     "id":"25835c9b-5d86-4d5c-bef2-6bc557324453",
-    "title": "Layer 3",
+    "title": "Castles",
     "icon": "castle-15",
     "type":"FeatureCollection",
     features: [

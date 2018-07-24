@@ -1,6 +1,6 @@
 export default {
     "id":"25835c9b-5d86-4d5c-bef2-6bc557323323",
-    "title": "Layer 2",
+    "title": "Monuments",
     "icon": "monument",
     "type":"FeatureCollection",
     "features":[    
