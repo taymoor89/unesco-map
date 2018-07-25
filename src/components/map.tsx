@@ -36,14 +36,6 @@ export interface Props {
   layers: Layer[];
 }
 
-/* const layer1Layout: MonumentLayout = {
-  'icon-image': 'nature'
-}; */
-
-/* const layer2Layout: MonumentLayout = {
-  'icon-image': 'nature'
-}; */
-
 class UnescoMap extends React.Component<Props> {
   private markerHover = (key: string, { map }: any) => {
       map.getCanvas().style.cursor = 'pointer';
@@ -57,8 +49,6 @@ class UnescoMap extends React.Component<Props> {
 
   public render() {
     const { monuments, BoundsChanged, mapInit, center, zoom, hoveredItem, onMonumentClick } = this.props;
-    // const layer1 = Object.keys(monuments).filter(k => monuments[k].icon === 'Natural');
-    // const layer2 = Object.keys(monuments).filter(k => monuments[k].icon === 'Natural');
     let activeLayers = this.props.layers.filter(layer => layer.active);
     const layers = activeLayers.map(layer => {
       const layout: MonumentLayout = {

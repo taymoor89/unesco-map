@@ -91,22 +91,6 @@ const monuments = (state: MonumentDict = {}, { type, payload, id }: RThunkAction
   }
 };
 
-/* const activeLayers = (state: ActiveLayer[] = [], {type, payload}: RThunkAction) => {
-  switch(type) {
-    case 'TOGGLE_LAYER':
-      const found = state.find(item => item.id === payload.id);
-
-      if(found) {
-        return state.filter(item => item.id !== payload.id)
-      }
-      else {
-        return [...state, payload];
-      }
-
-    default: return state;
-  }
-} */
-
 const layers = (state: Layer[] = [], {type, payload}: RThunkAction) => {
   switch (type) {
     case 'ADD_LAYER':

@@ -1,4 +1,3 @@
-// import {Layer} from '../reducers';
 import {
     ADD_LAYER,
     TOGGLE_LAYER
