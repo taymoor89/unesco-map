@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 export interface Props {
   filteredMonuments: string[];
   monuments: MonumentDict;
-  onSelectItem: (key: string) => void;
+  onSelectItem: (layerId: string, key: string) => void;
   onMouseEnter: (key: string) => void;
   onMouseLeave: () => void;
   layers: Layer[];
@@ -81,7 +81,7 @@ class SidepanList extends React.Component<Props, State> {
               <MonumentItem
                 monument={monument}
                 key={index}
-                onClick={() => onSelectItem(monument.id)}
+                onClick={() => onSelectItem(monument.layerId, monument.id)}
                 onMouseEnter={() => onMouseEnter(monument.id)}
                 onMouseLeave={() => onMouseLeave()}/>
             ))

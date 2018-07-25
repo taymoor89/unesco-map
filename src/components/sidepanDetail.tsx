@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
+import { Link } from "react-router";
 import { Monument, State as StateRoot } from '../reducers/index';
 import { StyleSheet, css } from 'aphrodite/no-important';
 import Slider from './slider';
@@ -76,6 +77,14 @@ const styles = StyleSheet.create({
   },
   back: {
     marginRight: 4
+  },
+  links: {
+    marginTop: 10
+  },
+  link: {
+    margin: '10px 0',     
+    textDecoration: 'underline',
+    color: 'inherit'
   }
 });
 
@@ -132,6 +141,21 @@ class SidepanDetail extends React.Component<Props, State> {
           <h1 className={css(styles.title)}>{monument.properties.Loc}</h1>          
           <div className={css(styles.description)}>
             { monument.properties.Info }
+          </div>
+          <div className={css(styles.links)}>
+            {
+              this.props.monument.properties.Links && 
+              this.props.monument.properties.Links.length > 0 && 
+              this.props.monument.properties.Links.map((id, idx) => {
+                return (
+                  <Link
+                    className={css(styles.link)}
+                    key={id} 
+                    to={`/detail/${this.props.monument.layerId}/${id}`}
+                  >Link {idx + 1}</Link>
+                );
+              })
+            }
           </div>
         </div>
       </div>

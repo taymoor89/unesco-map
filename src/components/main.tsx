@@ -70,6 +70,14 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
             zoom: defaultZoom,
             hoveredItem: ''
           });
+        } else if (ev.pathname.includes('detail')) {
+          const parts = ev.pathname.trim().split('/');
+          const id = parts[3];
+          const selectedMonument = this.props.monuments[id];        
+          this.setState({
+            center: selectedMonument.geometry.coordinates,
+            zoom: [11]
+          });       
         }
       });      
     });    
@@ -138,7 +146,7 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
     this.props.toggleLayer(layerId);
   };
 
-  public render() {
+  public render() {    
     const { monuments, children } = this.props;
     const { zoom, center, hoveredItem, filteredMonuments } = this.state;
 

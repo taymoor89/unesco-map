@@ -18,7 +18,7 @@ export interface Properties {
   Ref: string;
   still: string;
   Media: Picture[];
-  LinkID: string;
+  Links: string[];
 }
 
 export interface Monument {
