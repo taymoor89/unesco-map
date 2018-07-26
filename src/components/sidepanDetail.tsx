@@ -129,13 +129,13 @@ class SidepanDetail extends React.Component<Props, State> {
             {
               this.props.monument.properties.Links && 
               this.props.monument.properties.Links.length > 0 && 
-              this.props.monument.properties.Links.map((id, idx) => {
+              this.props.monument.properties.Links.map((link) => {
                 return (
                   <Link
                     className={css(styles.link)}
-                    key={id} 
-                    to={`/detail/${this.props.monument.layerId}/${id}`}
-                  >Link {idx + 1}</Link>
+                    key={link.id} 
+                    to={`/detail/${this.props.monument.layerId}/${link.id}`}
+                  >{link.title}</Link>
                 );
               })
             }

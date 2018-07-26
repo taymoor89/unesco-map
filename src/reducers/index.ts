@@ -12,13 +12,18 @@ export interface Geometry {
   coordinates: [number, number];
 }
 
+export interface Link {
+  id: string;
+  title: string;
+}
+
 export interface Properties {
   Info: string;
   Loc: string;
   Ref: string;
   still: string;
   Media: Picture[];
-  Links: string[];
+  Links: Link[];
 }
 
 export interface Monument {
@@ -38,12 +43,6 @@ export interface Layer {
   active: boolean;
 }
 
-export interface ActiveLayer{
-  id: string;
-  title: string;
-  icon: string;
-}
-
 export interface MonumentDict {
     [id: string]: Monument;
 }
@@ -55,7 +54,6 @@ export interface RThunkAction extends Action {
 
 export interface State {
   monuments: MonumentDict;
-  activeLayers: ActiveLayer[];
   layers: Layer[];
   routing: RouterState;
 }
