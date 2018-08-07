@@ -10,7 +10,6 @@ import { browserHistory, RouteComponentProps } from 'react-router';
 import { Props as SidepanListProps } from './sidepanList';
 import { RouteProps } from './sidepanDetail';
 import SidepanContainer from './sidepanContainer';
-import { fetchMonument } from '../actions/monument';
 import LayerList from './layerList';
 import {toggleLayer} from '../actions/layers';
 
@@ -18,7 +17,6 @@ interface Props {
   getMonuments: () => any;
   monuments: MonumentDict;
   layers: Layer[];
-  fetchMonument: (layerId: string, id: string) => any;
   toggleLayer: (layerId: any) => any;
 }
 
@@ -51,17 +49,15 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
   };
 
   public componentWillMount() {
-    const { location, fetchMonument, params } = this.props;
+    const { location, params } = this.props;
     this.props.getMonuments().then(() => {
 
       if (location.pathname.includes('detail')) {
-        fetchMonument(params.layerId, params.id).then(() => {
           this.setState({
             center: this.props.monuments[params.id].geometry.coordinates as [number, number],
             zoom: [11],
             hoveredItem: params.id
           });
-        });
       }
   
       browserHistory.listen((ev) => {
@@ -70,13 +66,15 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
             zoom: defaultZoom,
             hoveredItem: ''
           });
-        } else if (ev.pathname.includes('detail')) {
+        }
+        //on every route change which contains `detail` keyword
+        else if (ev.pathname.includes('detail')) {          
           const parts = ev.pathname.trim().split('/');
-          const id = parts[3];
-          const selectedMonument = this.props.monuments[id];        
+          const id = parts[3];          
           this.setState({
-            center: selectedMonument.geometry.coordinates,
-            zoom: [11]
+            center: this.props.monuments[id].geometry.coordinates as [number, number],
+            zoom: [11],
+            hoveredItem: id
           });       
         }
       });      
@@ -128,18 +126,9 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
   }
 
   private onMonumentClick = (layerId: string, k: string) => {
-    const selectedMonument = this.props.monuments[k];
-
-    this.setState({
-      center: selectedMonument.geometry.coordinates,
-      zoom: [11]
-    });
-
-    this.props.fetchMonument(layerId, k);
-
     setTimeout(() => {
       browserHistory.replace(`/detail/${layerId}/${k}`);
-    }, 500);
+    }, 100);
   };
 
   handleLayerClick = (layerId: string) => {
@@ -186,6 +175,5 @@ export default connect((state: State) => ({
   layers: state.layers,  
 }), dispatch => ({
   getMonuments: () => dispatch(getMonuments()),
-  fetchMonument: (layerId: string, id: string) => dispatch(fetchMonument(layerId, id)),
   toggleLayer: (layerId: string) => dispatch(toggleLayer(layerId)),
 }))(Main);
