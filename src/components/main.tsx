@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
   }
 });
 
-const defaultZoom: [number] = [6];
-const defaultCenter = [-0.2416815, 51.5285582];
+const defaultZoom: [number] = [7];
+const defaultCenter = [-3.243395493992125, 52.449215775360784];
 const markers = [
   {
     url: "/markers/places.png",
@@ -194,7 +194,7 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
           BoundsChanged={this.BoundsChanged}
           mapInit={this.mapInit}
           onMonumentClick={this.onMonumentClick}
-          layers={this.props.layers}
+          layers={this.props.layers}          
         />
       </div>
     );
