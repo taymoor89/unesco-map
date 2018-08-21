@@ -1,0 +1,44 @@
+{
+    "id":"25835c9b-5d86-4d5c-bef2-6bc557324453",
+    "title":"Hotels",
+    "icon":"hotels-icon",
+    "type":"FeatureCollection",
+    "features":[
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                    -3.4526,52.7660
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"Lake Vyrnwy Hotel and Spa",
+                "Info":"Situated on a 24,000 acre national nature reserve, this upscale, lakefront spa hotel was built in 1890 and has panoramic hillside views. It's 18.7 miles from Welshpool Golf Club and 22.3 miles from Welshpool train station. The elegant rooms feature Egyptian cotton sheets, satellite TV and free Wi-Fi, as well as tea and coffeemaking equipment. Some rooms also have 4-poster beds and private balconies with lake views. There's a renowned fine-dining restaurant, a bistro and a traditional pub. Afternoon tea is also served. Other amenities include meeting rooms, function spaces and a full-service spa with a gym.",
+                "moreInfoLink": {
+                    "url": "https://lakevyrnwy.com",
+                    "title": "Click for more information and lowest price booking"
+                },
+                "still":"https://lakevyrnwy.com/images/user/bg-index.jpg",
+                "Media":[
+                    {
+                        "type":"image",
+                        "url":"https://lakevyrnwy.com/images/user/bg-index.jpg"
+                    },
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-streaming/LakeVyrnwyVidA.mp4"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"TO BE INSERTED",
+                        "title":"Down valley at Dinas Mawddy"
+                    }
+                ]
+            },
+            "id":"8652a675-eb3e-40d7-9ea0-14a7d809cfc3"
+        }
+    ]
+}

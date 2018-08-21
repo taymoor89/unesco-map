@@ -12,6 +12,11 @@ export interface Geometry {
   coordinates: [number, number];
 }
 
+export interface MoreInfoLink {
+  url: string;
+  title: string;
+}
+
 export interface Link {
   id: string;
   title: string;
@@ -22,8 +27,9 @@ export interface Properties {
   Loc: string;
   Ref: string;
   still: string;
+  moreInfoLink?: MoreInfoLink
   Media: Picture[];
-  Links: Link[];
+  Links?: Link[];
 }
 
 export interface Monument {

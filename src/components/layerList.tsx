@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
         border: '1px solid green'
     },
     inActive: {
-        background: '#ccc',
-        color: 'black',
+        background: '#5A5A5A',
+        color: 'white',
         border: '1px solid grey'
     }
 });
@@ -35,7 +35,6 @@ export interface Props {
     layers: Layer[];
     onClick: (layerId: any) => void;
 }
-
 
 class LayerList extends React.Component<Props, {}> {
     render () {
@@ -54,7 +53,7 @@ class LayerList extends React.Component<Props, {}> {
         return (
             <div className={css(styles.layersContainer)}>
             <ul className={css(styles.layers)}>
-            {layers}
+                {layers}
             </ul>                
             </div>
         );

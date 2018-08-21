@@ -71,9 +71,11 @@
     "whatwg-fetch": "^2.0.2"
   },
   "dependencies": {
+    "@types/async": "^2.0.49",
     "aphrodite": "^1.1.0",
+    "async": "^2.6.1",
     "lodash": "^4.17.4",
-    "mapbox-gl": "^0.38.0",
+    "mapbox-gl": "^0.48.0",
     "moment": "^2.17.1",
     "prop-types": "^15.6.0",
     "ramda": "^0.23.0",

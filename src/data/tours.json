@@ -1,0 +1,519 @@
+{
+    "id":"25835c9b-5d86-4d5c-bef2-6bc557323356",
+    "title":"Tours",
+    "icon":"tours-icon",
+    "type":"FeatureCollection",
+    "features":[
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                    -3.891220,
+                     52.918011
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"1 - Snowdonia",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still1.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/1-1.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"wxtest1cricciethcastle",
+                        "title":"Go to the next clip - Criccieth Castle"
+                    }
+                ]
+            },
+            "id":"wxtest1snowdonia"
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                    -4.232472,
+                     52.916012
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"2 - Criccieth Castle",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still2.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/2-10.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"wxtest1portmeirion",
+                        "title":"Go to the next clip - Portmeirion"
+                    }
+                ]
+            },
+            "id":"wxtest1cricciethcastle"
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                     -4.097332,
+                     52.914499
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"3 - Portmeirion",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still3.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/3-11.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"wxtest1harlechcastle",
+                        "title":"Go to the next clip - Harlech Castle"
+                    }
+                ]
+            },
+            "id":"wxtest1portmeirion"
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                     -4.108902,
+                     52.859998
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"4 - Harlech Castle",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still4.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/4-12.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"wxtest1barmouth",
+                        "title":"Go to the next clip - Barmouth"
+                    }
+                ]
+            },
+            "id":"wxtest1harlechcastle"
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                     -4.053951,
+                     52.707953
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"5 - Barmouth",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still5.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/5-13.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"wxtest1dolgellau",
+                        "title":"Go to the next clip - Dolgellau & Cadair Idris"
+                    }
+                ]
+            },
+            "id":"wxtest1barmouth"
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                     -3.884400,
+                     52.742150
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"6 - Dolgellau",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still6.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/6-14.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"wxtest1aberystwyth",
+                        "title":"Go to the next clip - Aberystwyth"
+                    }
+                ]
+            },
+            "id":"wxtest1dolgellau"
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                     -4.082920,
+                     52.415303
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"7 - Aberystwyth",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still7.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/7-15.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"wxtest1cilgerrancastle",
+                        "title":"Go to the next clip - Cilgerran Castle"
+                    }
+                ]
+            },
+            "id":"wxtest1aberystwyth"
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                     -4.635259,
+                     52.056159
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"8 - Cilgerran Castle",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still8.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/8-16.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"wxtest1preselimountains",
+                        "title":"Go to the next clip - Preseli Mountains"
+                    }
+                ]
+            },
+            "id":"wxtest1cilgerrancastle"
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                     -4.783333,
+                     51.958333
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"9 - Preseli Mountains",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still9.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/9-17.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"wxtest1pembrokeshirecoast",
+                        "title":"Go to the next clip - Pembrokeshire Coast"
+                    }
+                ]
+            },
+            "id":"wxtest1preselimountains"
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                     -5.097453,
+                     51.812224
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"10 - Pembrokeshire Coast",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still10.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/10-2.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"wxtest1ramseyisland",
+                        "title":"Go to the next clip - Ramsey Island"
+                    }
+                ]
+            },
+            "id":"wxtest1pembrokeshirecoast"
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                     -5.340948,
+                     51.866977
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"11 - Ramsey Island",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still11.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/11-3.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"wxtest1stdavids",
+                        "title":"Go to the next clip - St David's"
+                    }
+                ]
+            },
+            "id":"wxtest1ramseyisland"
+        },
+
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                     -5.265995,
+                     51.881227
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"12 - St David's",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still12.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/12-4.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"wxtest1solva",
+                        "title":"Go to the next clip - Solva & Iron Age Defences"
+                    }
+                ]
+            },
+            "id":"wxtest1stdavids"
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                     -5.195314,
+                     51.873979
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"13 - Solva & Iron Age Defences",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still13.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/13-5.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"wxtest1milfordhaven",
+                        "title":"Go to the next clip - Milford Haven"
+                    }
+                ]
+            },
+            "id":"wxtest1solva"
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                     -5.195314,
+                     51.873979
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"14 - Milford Haven",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still14.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/14-6.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"wxtest1pembrokecastle",
+                        "title":"Go to the next clip - Pembroke Castle"
+                    }
+                ]
+            },
+            "id":"wxtest1milfordhaven"
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                     -4.920535,
+                     51.676904
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"15 - Pembroke Castle",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still15.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/15-7.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"wxtest1caldeyisland",
+                        "title":"Go to the next clip - Caldey Island"
+                    }
+                ]
+            },
+            "id":"wxtest1pembrokecastle"
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                     -4.686194,
+                      51.634682
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"16 - Caldey Island",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still16.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/16-8.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"wxtest1tenby",
+                        "title":"Go to the next clip - Tenby"
+                    }
+                ]
+            },
+            "id":"wxtest1caldeyisland"
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[
+                     -4.703578,
+                      51.672736
+                ]
+            },
+            "properties":{
+                "Ref":"",
+                "Loc":"17 - Tenby",
+                "Info":"Lorem ipsum dolor sit amet, eu vel aperiri vocibus electram. Velit minimum voluptatum has ex, no ius porro aperiri legendos, eum ex amet eripuit deseruisse. Et eam aliquam pericula, vix te affert accumsan offendit. Ad mea errem dicam tollit, verear deserunt constituam quo ut, no quis modus tritani nec.",
+                "still":"https://s3.amazonaws.com/skyworks-wx/still17.jpg",
+                "Media":[
+
+                    {
+                        "type":"video",
+                        "url":"https://s3.amazonaws.com/skyworks-wx/17-9.m4v"
+                    }
+                ],
+                "Links":[
+                    {
+                        "id":"",
+                        "title":""
+                    }
+                ]
+            },
+            "id":"wxtest1tenby"
+        }
+    ]
+}

@@ -33,10 +33,9 @@ export interface State {
   sort: string;
 }
 
-const selectToField = {
-  Year: 'date_inscribed',
-  Name: 'site',
-  Country: 'location'
+const selectToField = { 
+  Name: 'Loc',
+  Category: 'icon'
 };
 
 const select = Object.keys(selectToField);
@@ -70,7 +69,12 @@ class SidepanList extends React.Component<Props, State> {
         const layer = this.props.layers.find(layer => layer.id === monument.layerId);
         return layer && layer.active && monument.properties.Loc.toLowerCase().includes(query);
       })
-      .sort((a, b) => a[sort] > b[sort] ? 1 : -1);
+      .sort((a, b) => {
+        if(sort == 'Loc')
+          return a.properties[sort] > b.properties[sort] ? 1 : -1
+        else
+          return a[sort] > b[sort] ? 1 : -1
+      });
 
     return (
       <div className={css(styles.wrapper)}>

@@ -58,6 +58,10 @@ const styles = StyleSheet.create({
     lineHeight: '26px',
     overflow: 'auto'
   },
+  moreInfoLink: {   
+    textDecoration: 'underline',
+    color: 'inherit'
+  },
   footer: {
     borderBottom: '1px solid #edeaea',
     height: 56,
@@ -124,6 +128,13 @@ class SidepanDetail extends React.Component<Props, State> {
           <h1 className={css(styles.title)}>{monument.properties.Loc}</h1>          
           <div className={css(styles.description)}>
             { monument.properties.Info }
+            {
+              (monument.properties.moreInfoLink)
+              ?<a 
+                className={css(styles.moreInfoLink)}
+                href={monument.properties.moreInfoLink.url}>{monument.properties.moreInfoLink.title}</a>
+              : ''
+            }
           </div>
           <div className={css(styles.links)}>
             {

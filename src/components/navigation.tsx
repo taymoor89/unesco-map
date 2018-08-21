@@ -35,8 +35,7 @@ const styles = StyleSheet.create({
     background: 'none',
     outline: 'none',
     color: colors.darkBlue,
-    fontSize: 12,
-    maxWidth: 55
+    fontSize: 12
   }
 });
 

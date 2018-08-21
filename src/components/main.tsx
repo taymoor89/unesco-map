@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as async from 'async';
 import { MapEvent } from 'react-mapbox-gl/lib/map-events';
 import { throttle } from 'lodash';
 import { connect } from 'react-redux';
@@ -37,6 +38,20 @@ const styles = StyleSheet.create({
 
 const defaultZoom: [number] = [6];
 const defaultCenter = [-0.2416815, 51.5285582];
+const markers = [
+  {
+    url: "/markers/places.png",
+    id: "places-icon"
+  },
+  {
+    url: "/markers/hotels.png",
+    id: "hotels-icon"
+  },
+  {
+    url: "/markers/tours.png",
+    id: "tours-icon"
+  }
+]
 
 class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>, StateComp> {
   public state = {
@@ -79,12 +94,28 @@ class Main extends React.Component<Props & RouteComponentProps<RouteProps, void>
         }
       });      
     });    
-  } 
+  }
 
-  private mapInit: MapEvent = (map: any) => {
-    const bounds = map.getBounds();
-    const boundsArr = [bounds.getSouth(), bounds.getWest(), bounds.getNorth(), bounds.getEast()];    
-    this.setMonumentsAndBounds(boundsArr);
+  private loadMarkers: any = (map: any, cb: Function) => {
+    async.each(markers, (m: any, next: Function) => {
+      map.loadImage(m.url, (err: any, img: any) => {
+          if(err) return next(err);
+          map.addImage(m.id, img);
+          next();
+        }
+      );         
+    }, (err: Error) => {
+      cb(err);
+    })
+  };
+
+  private mapInit: MapEvent = (map: any) => {   
+    this.loadMarkers(map, (err: Error) => {
+      if(err) throw err;
+      const bounds = map.getBounds();
+      const boundsArr = [bounds.getSouth(), bounds.getWest(), bounds.getNorth(), bounds.getEast()];    
+      this.setMonumentsAndBounds(boundsArr);
+    });     
   };
 
   private setMonumentsAndBounds = (bounds: number[]) => {
