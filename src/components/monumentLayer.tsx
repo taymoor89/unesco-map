@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { Layer, Feature } from 'react-mapbox-gl';
 import { MonumentDict } from '../reducers/index';
+import { SymbolLayout } from 'mapbox-gl';
 
 export interface MonumentLayout {
   'icon-image': string;
+  visibility: string;
 }
 
 export interface Props {
@@ -13,6 +15,7 @@ export interface Props {
   markerEndHover: Function;
   monumentIds: string[];
   layout: MonumentLayout;
+  layerId: string;
 }
 
 const monumentLayer: React.StatelessComponent<Props> = ({
@@ -21,12 +24,13 @@ const monumentLayer: React.StatelessComponent<Props> = ({
   markerHover,
   markerEndHover,
   monumentIds,
-  layout
+  layout,
+  layerId
 }) => (
   <Layer
     type="symbol"
-    id={layout['icon-image']}
-    layout={layout}>
+    id={layerId}
+    layout={layout as SymbolLayout}>
     {
       monumentIds.map(k => (
         <Feature

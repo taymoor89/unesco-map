@@ -49,15 +49,21 @@ class UnescoMap extends React.Component<Props> {
 
   public render() {
     const { monuments, BoundsChanged, mapInit, center, zoom, hoveredItem, onMonumentClick } = this.props;
-    let activeLayers = this.props.layers.filter(layer => layer.active);
-    const layers = activeLayers.map(layer => {
+    const layers = this.props.layers.map(layer => {
       const layout: MonumentLayout = {
-        'icon-image': layer.icon
+        'icon-image': layer.icon,
+        visibility: 'visible'
       };
+
+      if(!layer.active) {
+        layout.visibility = "none";
+      }
+
       const monumentIds = Object.keys(monuments).filter(k => monuments[k].layerId === layer.id);
       return (
         <MonumentLayer
             key={layer.id}
+            layerId={layer.id}
             onMonumentClick={onMonumentClick}
             monuments={monuments}
             layout={layout}
